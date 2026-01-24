@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Networking.Tcp": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
