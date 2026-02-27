@@ -1,0 +1,12 @@
+@Trades.Api_HostAddress = http://localhost:5199
+
+POST {{Trades.Api_HostAddress}}/api/trades/createTrade
+Content-Type: application/json
+{
+    "AccountId": "12312356", 
+    "Symbol": "APPL",
+    "Quantity": 123,
+    "Price": 102.00
+}
+
+###

@@ -178,7 +178,7 @@ namespace Networking.Tcp.Core
                     await _socket.SendAsync(
                         new ArraySegment<byte>(data),
                         SocketFlags.None,
-                        cts.Token);
+                        cts.Token).ConfigureAwait(false);
                 }
 
                 _logger.LogDebug($"Sent {data.Length} bytes");
