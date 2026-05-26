@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../VectorStruct/VectorStruct.csproj" Id="3f62b45f-671e-47bd-99d3-51f308dc4996" />
+  <Project Path="ConsoleApp/ConsoleApp.csproj" />
+</Solution>
