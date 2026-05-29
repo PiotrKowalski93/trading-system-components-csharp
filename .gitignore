@@ -424,3 +424,4 @@ postgresql_data
 redisinsight_data
 redis_data
 
+src/ZeroAllocationParsers/ConsoleApp/Feed.csv

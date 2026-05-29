@@ -1,4 +1,5 @@
 <Solution>
-  <Project Path="../VectorStruct/VectorStruct.csproj" Id="3f62b45f-671e-47bd-99d3-51f308dc4996" />
   <Project Path="ConsoleApp/ConsoleApp.csproj" />
+  <Project Path="OrderBook.L3.Benchmarks/OrderBook.L3.Benchmarks.csproj" Id="2d3d310f-5d1f-49fa-a837-142555b274fe" />
+  <Project Path="OrderBook.L3/OrderBook.L3.csproj" Id="401ce918-5dfa-4be2-9321-770e2d44fd4b" />
 </Solution>
