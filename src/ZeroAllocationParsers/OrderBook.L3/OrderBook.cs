@@ -4,20 +4,20 @@
     {
         private string _tick;
 
-        private SortedDictionary<long, Order> _orders;
+        private Dictionary<long, Order> _orders;
 
-        private Dictionary<decimal, PriceLevel> _bids;
-        private Dictionary<decimal, PriceLevel> _asks;
+        private Dictionary<int, PriceLevel> _bids;
+        private Dictionary<int, PriceLevel> _asks;
 
         //TODO: Add bestBid and bestAsk fields to optimize retrieval of best prices
 
         public OrderBook(string tick)
         {
             _tick = tick;
-            _orders = new SortedDictionary<long, Order>();
+            _orders = new Dictionary<long, Order>(1_500_000);
 
-            _bids = new Dictionary<decimal, PriceLevel>();
-            _asks = new Dictionary<decimal, PriceLevel>();
+            _bids = new Dictionary<int, PriceLevel>(1_000_000);
+            _asks = new Dictionary<int, PriceLevel>(1_000_000);
         }
 
         public void Add(Order order)
@@ -98,6 +98,13 @@
                 }
             }
         }
+
+        public void Clear()
+        {
+            _orders.Clear();
+            _bids.Clear();
+            _asks.Clear();
+        }
     }
 
     public struct Order
@@ -108,12 +115,17 @@
         public int Quantity { get; set; }
     }
 
-    public class PriceLevel
+    public struct PriceLevel
     {
+        public PriceLevel()
+        {
+            _Orders = new Dictionary<long, Order>();
+        }
+
         public int Price { get; set; }
         public int TotalQuantity { get; set; }
         public int OrdersCount { get; set; }
 
-        public SortedDictionary<long, Order> _Orders { get; set; } = new SortedDictionary<long, Order>();
+        public Dictionary<long, Order> _Orders { get; set; }
     }
 }
