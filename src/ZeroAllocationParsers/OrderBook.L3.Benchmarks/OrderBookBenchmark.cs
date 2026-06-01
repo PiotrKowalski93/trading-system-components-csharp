@@ -52,6 +52,14 @@ namespace OrderBook.L3.Benchmarks
                 _manager.Process(evt);
             }
         }
+
+        [IterationCleanup]
+        public void IterationCleanup()
+        {
+            Console.WriteLine("------------------------------------------------------");
+            Console.WriteLine("Cleanup.");
+            Console.WriteLine("------------------------------------------------------");
+        }
     }
 
     public class Program
