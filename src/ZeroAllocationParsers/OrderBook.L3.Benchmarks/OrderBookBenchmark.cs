@@ -11,8 +11,8 @@ namespace OrderBook.L3.Benchmarks
     public class OrderBookBenchmark
     {
         private List<OrderEvent> _events;
-        private OrderBook _book;
-        private OrderManager _manager;
+        private OrderBook_v1 _book;
+        private OrderManager_v1 _manager;
 
         [GlobalSetup]
         public void Setup()
@@ -40,8 +40,8 @@ namespace OrderBook.L3.Benchmarks
         [IterationSetup]
         public void IterationSetup()
         {
-            _book = new OrderBook("Sample");
-            _manager = new OrderManager(_book);
+            _book = new OrderBook_v1("Sample");
+            _manager = new OrderManager_v1(_book);
         }
 
         [Benchmark]

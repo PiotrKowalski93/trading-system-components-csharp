@@ -8,31 +8,19 @@ internal class Program
         Console.ReadLine();
 
         List<OrderEvent> _events;
-        OrderBook.L3.OrderBook _book;
-        OrderManager _manager;
+        OrderBook.L3.OrderBook_v1 _book;
+        OrderManager_v1 _manager;
 
         _events = CsvFeedReader
                     .Read("Feed.csv")
                     .ToList();
 
-        _book = new OrderBook.L3.OrderBook("Sample");
-        _manager = new OrderManager(_book);
+        // Break to run profiler before processing events
+        Console.WriteLine("READY");
+        Console.ReadLine();
 
-        foreach (var evt in _events)
-        {
-            _manager.Process(evt);
-        }
-
-        _book = new OrderBook.L3.OrderBook("Sample");
-        _manager = new OrderManager(_book);
-
-        foreach (var evt in _events)
-        {
-            _manager.Process(evt);
-        }
-
-        _book = new OrderBook.L3.OrderBook("Sample");
-        _manager = new OrderManager(_book);
+        _book = new OrderBook.L3.OrderBook_v1("Sample");
+        _manager = new OrderManager_v1(_book);
 
         foreach (var evt in _events)
         {

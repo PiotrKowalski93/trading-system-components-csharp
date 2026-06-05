@@ -4,11 +4,11 @@ using System.Text;
 
 namespace OrderBook.L3
 {
-    public sealed class OrderManager
+    public sealed class OrderManager_v1
     {
-        private readonly OrderBook _book;
+        private readonly OrderBook_v1 _book;
 
-        public OrderManager(OrderBook book)
+        public OrderManager_v1(OrderBook_v1 book)
         {
             _book = book;
         }
@@ -19,7 +19,7 @@ namespace OrderBook.L3
             {
                 case EventType.Add:
 
-                    var order = new Order
+                    var order = new Order_v1
                     {
                         OrderId = evt.OrderId,
                         Side = evt.IsBuy ? 0 : 1,

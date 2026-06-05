@@ -1,26 +1,25 @@
 ﻿namespace OrderBook.L3
 {
-    public class OrderBook
+    public class OrderBook_v1
     {
         private string _tick;
 
-        private Dictionary<long, Order> _orders;
+        private Dictionary<long, Order_v1> _orders;
 
-        private Dictionary<int, PriceLevel> _bids;
-        private Dictionary<int, PriceLevel> _asks;
-
+        private Dictionary<int, PriceLevel_v1> _bids;
+        private Dictionary<int, PriceLevel_v1> _asks;
+        
         //TODO: Add bestBid and bestAsk fields to optimize retrieval of best prices
-
-        public OrderBook(string tick)
+        public OrderBook_v1(string tick)
         {
             _tick = tick;
-            _orders = new Dictionary<long, Order>(1_500_000);
+            _orders = new Dictionary<long, Order_v1>(1_500_000);
 
-            _bids = new Dictionary<int, PriceLevel>(1_000_000);
-            _asks = new Dictionary<int, PriceLevel>(1_000_000);
+            _bids = new Dictionary<int, PriceLevel_v1>(1_000_000);
+            _asks = new Dictionary<int, PriceLevel_v1>(1_000_000);
         }
 
-        public void Add(Order order)
+        public void Add(Order_v1 order)
         {
             _orders[order.OrderId] = order;
 
@@ -28,7 +27,7 @@
 
             if (!priceLevel.TryGetValue(order.Price, out var level))
             {
-                level = new PriceLevel { Price = order.Price };
+                level = new PriceLevel_v1 { Price = order.Price };
                 priceLevel[order.Price] = level;
             }
 
@@ -107,7 +106,7 @@
         }
     }
 
-    public struct Order
+    public struct Order_v1
     {
         public long OrderId { get; set; }
         public int Side { get; set; }       // 0 for buy, 1 for sell
@@ -115,17 +114,17 @@
         public int Quantity { get; set; }
     }
 
-    public struct PriceLevel
+    public struct PriceLevel_v1
     {
-        public PriceLevel()
+        public PriceLevel_v1()
         {
-            _Orders = new Dictionary<long, Order>();
+            _Orders = new Dictionary<long, Order_v1>();
         }
 
         public int Price { get; set; }
         public int TotalQuantity { get; set; }
         public int OrdersCount { get; set; }
 
-        public Dictionary<long, Order> _Orders { get; set; }
+        public Dictionary<long, Order_v1> _Orders { get; set; }
     }
 }

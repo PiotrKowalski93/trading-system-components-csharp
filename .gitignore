@@ -425,3 +425,4 @@ redisinsight_data
 redis_data
 
 src/ZeroAllocationParsers/ConsoleApp/Feed.csv
+src/ZeroAllocationParsers/OrderBook.L3.PerfView/Feed.csv
