@@ -1,6 +1,6 @@
 ﻿namespace OrderBook.L3
 {
-    public sealed class OrderManager
+    public class OrderManager
     {
         private readonly OrderBook _book;
 

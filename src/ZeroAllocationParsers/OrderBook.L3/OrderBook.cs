@@ -1,11 +1,12 @@
 ﻿namespace OrderBook.L3
 {
-    public unsafe struct OrderBook
+    public unsafe sealed class OrderBook
     {
         private const int MAX_ORDERS = 1_500_000;
         private const int MAX_PRICE_LEVELS = 1_000;
 
-        private string _tick;
+        private readonly string _tick;
+        // fixed char _tick[16]; // Assuming max tick length is 15 + null terminator
 
         private PriceLevel* ask_PriceLevels_Head_;
         private PriceLevel* bid_PriceLevels_Head_;
@@ -49,10 +50,10 @@
 
     public unsafe struct Order
     {
-        public long OrderId { get; set; }
-        public int Side { get; set; }       // 0 for buy, 1 for sell
-        public int Price { get; set; }
-        public int Quantity { get; set; }
+        public long OrderId;
+        public int Side;       // 0 for buy, 1 for sell
+        public int Price;
+        public int Quantity;
 
         public Order* prev_;
         public Order* next_;
@@ -62,10 +63,10 @@
 
     public unsafe struct PriceLevel
     {
-        public int Price { get; set; }
-        public int Side { get; set; }       // 0 for buy, 1 for sell
-        public int TotalQuantity { get; set; }
-        public int OrdersCount { get; set; }
+        public int Price;
+        public int Side;       // 0 for buy, 1 for sell
+        public int TotalQuantity;
+        public int OrdersCount;
 
         public Order* FirstOrder;
         public Order* LastOrder;
