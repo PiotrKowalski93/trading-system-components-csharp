@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Text;
+﻿using System.Runtime.InteropServices;
 
-namespace OrderBook.L3
+namespace MemoryPool.Lib
 {
-    //TODO: Move to separate project and add tests, add to github page
     /// <summary>
     /// Memory pool for unmanaged types, allowing for efficient allocation and deallocation of memory without the overhead of garbage collection.
     /// </summary>
@@ -59,6 +55,10 @@ namespace OrderBook.L3
             return ptr;
         }
 
+        // How to prevent double deallocation?
+        // Maybe add a flag to the struct to indicate if it's allocated or not, but that would add overhead.
+        // Another option is to use a separate data structure to track allocated pointers, but that also adds overhead.
+        // For now, we can just document that the caller is responsible for ensuring that they do not double deallocate.
         private void Deallocate(T* ptr)
         {
             if(ptr == null)
