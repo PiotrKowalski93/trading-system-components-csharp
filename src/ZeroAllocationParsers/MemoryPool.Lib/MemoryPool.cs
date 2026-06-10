@@ -16,12 +16,15 @@ namespace MemoryPool.Lib
         private int* _freeIndexesStack;
         private int _freeTop;
 
+        public int FreeCount;
+
         public MemoryPool(int capacity)
         {
             if(capacity < 0)
                 throw new ArgumentOutOfRangeException(nameof(capacity), "Capacity must be non-negative.");
 
             _capacity = capacity;
+            FreeCount = capacity;
 
             // Allocate unmanaged memory for the buffer and the free index stack
             _buffer = (T*)NativeMemory.Alloc((nuint)capacity, (nuint)sizeof(T));
@@ -52,6 +55,7 @@ namespace MemoryPool.Lib
             T* ptr = GetFreeSlot();
             *ptr = value;
 
+            FreeCount--;
             return ptr;
         }
 
@@ -59,7 +63,7 @@ namespace MemoryPool.Lib
         // Maybe add a flag to the struct to indicate if it's allocated or not, but that would add overhead.
         // Another option is to use a separate data structure to track allocated pointers, but that also adds overhead.
         // For now, we can just document that the caller is responsible for ensuring that they do not double deallocate.
-        private void Deallocate(T* ptr)
+        public void Deallocate(T* ptr)
         {
             if(ptr == null)
                 throw new ArgumentNullException(nameof(ptr), "Pointer cannot be null.");
@@ -71,6 +75,8 @@ namespace MemoryPool.Lib
             
             *ptr = default;
             _freeIndexesStack[_freeTop++] = (int)index;
+
+            FreeCount++;
         }
 
         public void Dispose()

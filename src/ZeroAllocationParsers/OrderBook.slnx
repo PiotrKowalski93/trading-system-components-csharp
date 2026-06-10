@@ -1,6 +1,6 @@
 <Solution>
   <Project Path="ConsoleApp/ConsoleApp.csproj" />
-  <Project Path="MemoryPool.Lib.Tests/MemoryPool.Lib.Tests.csproj" Id="48b407a9-8109-4237-b2d2-18393445ea2a" />
+  <Project Path="MemoryPool.Lib.Tests/MemoryPool.Lib.Tests.csproj" Id="5cfa22b1-2ea3-4252-a496-fc33c1359171" />
   <Project Path="MemoryPool.Lib/MemoryPool.Lib.csproj" Id="bd24855b-a6e0-4204-bdf1-1f9a7341f26c" />
   <Project Path="OrderBook.L3.Benchmarks/OrderBook.L3.Benchmarks.csproj" Id="2d3d310f-5d1f-49fa-a837-142555b274fe" />
   <Project Path="OrderBook.L3.PerfView/OrderBook.L3.PerfView.csproj" Id="a8f91e7d-fd25-440c-b4fe-97feef962426" />
