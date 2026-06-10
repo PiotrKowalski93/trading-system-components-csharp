@@ -59,6 +59,15 @@ namespace MemoryPool.Lib
             return ptr;
         }
 
+        public T* Allocate()
+        {
+            T* ptr = GetFreeSlot();
+            *ptr = default;
+            
+            FreeCount--;
+            return ptr;
+        }
+
         // How to prevent double deallocation?
         // Maybe add a flag to the struct to indicate if it's allocated or not, but that would add overhead.
         // Another option is to use a separate data structure to track allocated pointers, but that also adds overhead.

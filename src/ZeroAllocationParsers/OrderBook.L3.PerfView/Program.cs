@@ -19,7 +19,7 @@ internal class Program
         //Console.WriteLine("READY");
         //Console.ReadLine();
 
-        _book = new OrderBook.L3.OrderBook("Sample");
+        _book = new OrderBook.L3.OrderBook();
         _manager = new OrderManager(_book);
 
         //foreach (var evt in _events)

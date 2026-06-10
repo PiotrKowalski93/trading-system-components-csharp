@@ -1,7 +1,4 @@
-﻿using System.Buffers;
-using System.Runtime.InteropServices;
-
-namespace MemoryPool.Lib.Tests
+﻿namespace MemoryPool.Lib.Tests
 {
     public class MemoryPoolTests
     {
